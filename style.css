@@ -5,8 +5,31 @@
     height: 40px;
     border: 1px solid black;
     text-align: center;
+    margin: 20px 0px 0px 0px;
 }
 
 .hidden {
     visibility: hidden;
 }
+
+.message {
+    font-size: 2em;
+    margin: 10px 0px 25px 310px;
+}
+
+button {
+    font-size: 1.5em;
+    margin: 5px 0px 0px 365px;
+}
+
+button1 {
+    width: 75px;
+    height: 40px;
+    padding: 5px;
+    font-size: 1.5em;
+    margin: 100px 0px 0px 450px;
+    background-color: blue;
+    border: solid 1px black;
+    color:white;
+}
+

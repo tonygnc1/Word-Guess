@@ -11,7 +11,7 @@ const myWords = [
 ];
 
 let cur = 0;
-let startTGime;
+let startTime;
 
 function init() {
   let div = document.createElement('div');
@@ -25,7 +25,7 @@ function init() {
   document.body.appendChild(button);
   let div1 = document.createElement('div');
   div1.classList.add('game');
-  document5.body.appendChild(div1);
+  document.body.appendChild(div1);
   console.log('ready');
 }
 
@@ -45,6 +45,7 @@ function start() {
   const game = document.querySelector('.game');
   tempArr.forEach(function(item) {
     let temp = item.split('');
+    // console.log(temp);
     temp.sort(function(a, b) {
       return 0.56 - Math.random();
     });
@@ -58,10 +59,47 @@ function start() {
     div.addEventListener('mouseenter', function() {
       div.style.backgroundColor = 'white';
       div.innerText = temp1;
+      console.log(item);
     });
-    div.addEventListener('mouseleave', function(){
-        div.style.backgroundColor='red';
-        div.innerText='Select';
-    })
+    div.addEventListener('mouseleave', function() {
+      div.style.backgroundColor = 'red';
+      div.innerText = 'Select';
+    });
+    div.addEventListener('click', function() {
+      if (div.word === myWords[cur]) {
+        this.classList.add('hidden');
+        cur++;
+        nextWord();
+      } else {
+  //       let div = document.createElement('div');
+  // div.setAttribute('class', 'message1');
+        message('Sorry-Game Over - Start New Game');
+        document.querySelector('.game').innerHTML = '';
+        let button1 = document.createElement('button1');
+        button1.type = 'button';
+        button1.innerText = 'Start Game';
+        button1.addEventListener('click', start);
+        document.body.appendChild(button1);
+      }
+    });
+    game.appendChild(div);
   });
+  nextWord();
+}
+
+function nextWord() {
+  if (cur >= myWords.length) {
+    let endTime = Date.parse(new Date());
+    let duration = (endTime - startTime) / 1000;
+    document.querySelector('.game').innerHTML = '';
+
+    document.querySelector('button').style.display = 'block';
+    message('Game Over, it took ' + duration + ' seconds');
+  } else {
+    message('Select this Word - ' + myWords[cur]);
+  }
+}
+
+function message(output) {
+  document.querySelector('.message').innerHTML = output;
 }
